@@ -20,3 +20,6 @@
 	
 -- 7 Find all animals not named Gabumon.
 	SELECT * FROM animals WHERE name !='Gabumon';
+
+-- 8 Find all animals with a weight between 10.4kg and 17.3kg (including the animals with the weights that equals precisely 10.4kg or 17.3kg)
+	SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
