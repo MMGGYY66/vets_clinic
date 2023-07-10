@@ -11,4 +11,7 @@
 
 -- List the date of birth of all animals named either "Agumon" or "Pikachu".
 	SELECT date_of_birth FROM animals WHERE name IN('Agumon','Pikachu');
-	
+
+-- 5 - List name and escape attempts of animals that weigh more than 10.5kg
+	SELECT name,escape_attempts FROM animals WHERE weight_kg >10.5;
+
