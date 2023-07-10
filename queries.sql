@@ -8,3 +8,7 @@
   
   -- List the name of all animals that are neutered and have less than 3 escape attempts.
 	SELECT * FROM animals WHERE neutered=true AND escape_attempts<3;
+
+-- List the date of birth of all animals named either "Agumon" or "Pikachu".
+	SELECT date_of_birth FROM animals WHERE name IN('Agumon','Pikachu');
+	
