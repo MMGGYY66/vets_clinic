@@ -53,3 +53,19 @@ SET species = 'pokemon'
 WHERE species = '';
 commit;
 
+-- delete all records in the animals table, then roll back the transaction.
+start transaction;
+savepoint B3;
+DELETE FROM animals;
+
+start transaction;
+ROLLBACK to B3;
+commit;
+
+-- Verify that the species column was updated.
+select *
+from animals;
+
+
+
+
