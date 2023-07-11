@@ -38,3 +38,18 @@ from animals;
 start transaction;
 ROLLBACK to B1;
 commit;
+
+-- Update the animals table by setting the species column to digimon for all animals that have a name ending in mon
+start transaction;
+UPDATE animals
+SET species = 'digimon'
+WHERE name LIKE'%mon';
+commit;
+
+-- Update the animals table by setting the species column to pokemon for all animals that don't have species already set.
+start transaction;
+UPDATE animals
+SET species = 'pokemon'
+WHERE species = '';
+commit;
+
