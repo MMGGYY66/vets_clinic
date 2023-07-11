@@ -23,3 +23,125 @@
 
 -- 8 Find all animals with a weight between 10.4kg and 17.3kg (including the animals with the weights that equals precisely 10.4kg or 17.3kg)
 	SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
+
+-- new Queries day 2
+-- Inside a transaction update the animals table by setting the species column to unspecified. Verify that change was made. Then roll back the change and verify that the species columns went back to the state before the transaction.
+start transaction;
+savepoint B1;
+UPDATE animals
+SET species = 'unspecified';
+
+-- Verify that the species column was updated.
+select *
+from animals;
+
+start transaction;
+ROLLBACK to B1;
+commit;
+
+-- Update the animals table by setting the species column to digimon for all animals that have a name ending in mon
+start transaction;
+UPDATE animals
+SET species = 'digimon'
+WHERE name LIKE'%mon';
+commit;
+
+-- Update the animals table by setting the species column to pokemon for all animals that don't have species already set.
+start transaction;
+UPDATE animals
+SET species = 'pokemon'
+WHERE species = '';
+commit;
+
+-- delete all records in the animals table, then roll back the transaction.
+start transaction;
+savepoint B3;
+DELETE FROM animals;
+
+start transaction;
+ROLLBACK to B3;
+commit;
+
+-- Verify that the species column was updated.
+select *
+from animals;
+
+-- Delete all animals born after Jan 1st, 2022.
+start transaction;
+savepoint B4;
+DELETE FROM animals
+WHERE date_of_birth > '2022-01-01';
+
+-- Update all animals' weight to be their weight multiplied by -1.
+UPDATE animals
+SET weight_kg = weight_kg * -1;
+
+-- Rollback to the savepoint
+start transaction;
+ROLLBACK to B4;
+commit;
+
+-- Update all animals' weights that are negative to be their weight multiplied by -1.
+start transaction;
+UPDATE animals
+SET weight_kg = weight_kg * -1
+WHERE weight_kg < 0;
+commit;
+
+-- queries to answer the following questions:
+-- How many animals are there?
+SELECT 
+    COUNT(name)
+FROM
+    animals; 
+-- 15 animals
+
+-- How many animals have never tried to escape?
+SELECT 
+    COUNT(escape_attempts)
+FROM
+    animals
+WHERE escape_attempts <= 0; 
+
+-- THE ANSWER IS 3
+
+-- What is the average weight of animals?
+SELECT 
+    AVG(weight_kg)
+FROM
+    animals; 
+	-- the average weight IS 14.7846666666666667
+
+-- Who escapes the most, neutered or not neutered animals?
+SELECT neutered,
+SUM(escape_attempts) total_attempts 
+FROM animals 
+GROUP BY neutered; 
+
+-- neutered 31 or not neutered 5
+
+-- What is the minimum and maximum weight of each type of animal?
+SELECT species,
+MIN(weight_kg) AS min_weight, 
+MAX(weight_kg) max_weight 
+FROM animals 
+GROUP BY species; -- species | min_weight | max_weight
+                  ---------+------------+------------
+                  -- pokemon |         11 |         22
+                  -- digimon |        5.7 |         45
+
+-- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
+SELECT species, 
+AVG(escape_attempts) AS av_escape_attempts 
+FROM animals 
+WHERE EXTRACT(YEAR FROM date_of_birth) 
+BETWEEN 1990 AND 2000 
+GROUP BY species; 
+--  species | av_escape_attempts
+---------+--------------------
+ -- pokemon | 3.0000000000000000
+
+
+
+
+
