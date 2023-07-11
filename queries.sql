@@ -30,3 +30,11 @@ start transaction;
 savepoint B1;
 UPDATE animals
 SET species = 'unspecified';
+
+-- Verify that the species column was updated.
+select *
+from animals;
+
+start transaction;
+ROLLBACK to B1;
+commit;
