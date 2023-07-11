@@ -81,6 +81,14 @@ start transaction;
 ROLLBACK to B4;
 commit;
 
+-- Update all animals' weights that are negative to be their weight multiplied by -1.
+start transaction;
+UPDATE animals
+SET weight_kg = weight_kg * -1
+WHERE weight_kg < 0;
+commit;
+
+-- queries to answer the following questions:
 
 
 
