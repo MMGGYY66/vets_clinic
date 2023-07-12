@@ -191,6 +191,19 @@ GROUP BY species.name;
 --Digimon         |                9
 --(2 rows)
 
+-- 5. List all Digimon owned by Jennifer Orwell.
+SELECT distinct (name) AS all_Digimons,
+    full_name AS owner_full_name
+FROM animals
+    JOIN owners ON animals.owner_id = owners.id
+WHERE full_name = 'Jennifer Orwell'
+    AND name LIKE '%mon';
+-- Answer:
+--  all_digimons | owner_full_name
+--------------+-----------------
+-- Gabumon      | Jennifer Orwell
+-- (1 row)
+
 
 
 
