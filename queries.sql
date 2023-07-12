@@ -156,6 +156,21 @@ WHERE full_name = 'Melody Pond';
 -- Charmander     | Melody Pond
 -- (3 rows)
 
+-- 2. List of all animals that are pokemon (their type is Pokemon).
+SELECT distinct (animals.name) AS pokemons_only
+FROM animals
+    JOIN species ON animals.species_id = species.id
+WHERE species.name = 'Pokemon';
+-- Answer:
+-- pokemons_only
+---------------
+-- Pikachu
+-- Blossom
+-- Ditto
+-- Squirtle
+-- Charmander
+--  (5 rows)
+
 
 
 
