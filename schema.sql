@@ -21,4 +21,11 @@ CREATE TABLE owners(
   PRIMARY KEY(id)
 );
 
+-- Create a table named species
+CREATE TABLE species(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  PRIMARY KEY(id)
+);
+
 
