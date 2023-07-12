@@ -178,6 +178,20 @@ FROM owners
     LEFT JOIN animals 
 	ON animals.owner_id = owners.id;
 
+-- 4. How many animals are there per species?
+SELECT species.name AS name_of_species,
+    COUNT(species_id) AS how_many_species
+FROM species
+    JOIN animals ON animals.species_id = species.id
+GROUP BY species.name;
+-- Answer:
+--name_of_species | how_many_species
+-----------------+------------------
+--Pokemon         |                6
+--Digimon         |                9
+--(2 rows)
+
+
 
 
 
