@@ -141,6 +141,20 @@ GROUP BY species;
 ---------+--------------------
  -- pokemon | 3.0000000000000000
 
+-- Day 3 Write queries (using JOIN) to answer the following questions: 
+-- 1. What animals belong to Melody Pond?
+SELECT name AS name_of_animal,
+    full_name AS owner_full_name
+FROM animals
+    JOIN owners ON animals.owner_id = owners.id
+WHERE full_name = 'Melody Pond';
+-- Answer:
+-- name_of_animal | owner_full_name
+------------------+-----------------
+-- Blossom        | Melody Pond
+-- Squirtle       | Melody Pond
+-- Charmander     | Melody Pond
+-- (3 rows)
 
 
 
