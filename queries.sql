@@ -216,6 +216,20 @@ WHERE full_name = 'Dean Winchester'
 ----------------+-----------------
 --(0 rows)
 
+-- 7. Who owns the most animals?
+SELECT full_name AS owner_full_name,
+    COUNT(owner_id) AS biggest_number_of_animals_owned
+FROM animals
+    JOIN owners ON animals.owner_id = owners.id
+GROUP BY full_name
+ORDER BY biggest_number_of_animals_owned DESC
+LIMIT 1;
+-- Answer:
+-- owner_full_name | biggest_number_of_animals_owned
+-----------------+---------------------------------
+-- "Jennifer Orwell"     |                 4
+-- (1 row)
+
 
 
 
