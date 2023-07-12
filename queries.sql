@@ -171,6 +171,13 @@ WHERE species.name = 'Pokemon';
 -- Charmander
 --  (5 rows)
 
+-- 3. List all owners and their animals, remember to include those that don't own any animal.
+SELECT full_name AS owner_full_name,
+    name AS name_of_animal
+FROM owners
+    LEFT JOIN animals 
+	ON animals.owner_id = owners.id;
+
 
 
 
