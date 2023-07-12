@@ -11,3 +11,14 @@ CREATE TABLE animals (
 
 -- day 2 ADD species 
  ALTER TABLE animals ADD species varchar(100);
+
+-- Day 3 Add new TABLEs
+
+CREATE TABLE owners(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  full_name VARCHAR(20),
+  age INT,
+  PRIMARY KEY(id)
+);
+
+
