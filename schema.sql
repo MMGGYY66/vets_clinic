@@ -47,3 +47,13 @@ ADD owner_id int;
 ALTER TABLE animals
 ADD FOREIGN KEY (owner_id) REFERENCES owners(id); 
 
+-- Day 4 project -- create vets table
+CREATE TABLE vets (
+  id int primary key GENERATED ALWAYS AS IDENTITY,
+  name varchar(255),
+  age integer,
+  date_of_graduation date
+);
+
+
+
