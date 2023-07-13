@@ -55,5 +55,13 @@ CREATE TABLE vets (
   date_of_graduation date
 );
 
+-- Create a "join table" called specializations to handle a many-to-many relationship between the tables species and vets
+CREATE TABLE specializations(
+  specializations_id SERIAL PRIMARY KEY,
+  species_id INTEGER REFERENCES species(id),
+  vets_id INTEGER REFERENCES vets(id)
+);
+
+
 
 
