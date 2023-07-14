@@ -56,10 +56,9 @@ CREATE TABLE vets (
 );
 
 -- Create a "join table" called specializations to handle a many-to-many relationship between the tables species and vets
-CREATE TABLE specializations(
-  specializations_id SERIAL PRIMARY KEY,
-  species_id INTEGER REFERENCES species(id),
-  vets_id INTEGER REFERENCES vets(id)
+CREATE TABLE specializations (
+  vets_id INTEGER REFERENCES vets(id),
+  specialty VARCHAR
 );
 
 -- Create a join table called visits to handle a many-to-many relationship between the tables animals and vets

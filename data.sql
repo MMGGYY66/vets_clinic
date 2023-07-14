@@ -240,39 +240,12 @@ VALUES
     '2008-06-08');
 
 -- Insert these data for specialties
-
-INSERT INTO specializations
-  (species_id, vets_id)
-VALUES
-  (
-    (SELECT id
-    FROM species
-    WHERE name = 'Pokemon' ),
-    (SELECT id
-    FROM vets
-    WHERE name = 'William Tatcher' ) ),
-  (
-    (SELECT id
-    FROM species
-    WHERE name = 'Digimon' ),
-    (SELECT id
-    FROM vets
-    WHERE name = 'Stephanie Mendez' )),
-  (
-    (SELECT id
-    FROM species
-    WHERE name = 'Pokemon' ),
-    (SELECT id
-    FROM vets
-    WHERE name = 'Stephanie Mendez' )),
-  (
-    (SELECT id
-    FROM species
-    WHERE name = 'Digimon' ),
-    (SELECT id
-    FROM vets
-    WHERE name = 'Jack Harkness' ));
-
+INSERT INTO specializations (vets_id, specialty) VALUES
+  (1, 'Pokemon'),
+  (3, 'Digimon'),
+  (3, 'Pokemon'),
+  (4, 'Digimon');
+  
 -- Insert these data for visits:
 INSERT INTO visits (animal_name, vets_id, date_of_visit) VALUES
   ('Agumon', 1, '2020-05-24'),
