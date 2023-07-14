@@ -230,6 +230,14 @@ LIMIT 1;
 -- "Jennifer Orwell"     |                 4
 -- (1 row)
 
+-- Day 4 Write queries to answer the following:
+-- 1. Who was the last animal seen by William Tatcher?
+-- Who was the last animal seen by William Tatcher?
+SELECT animal_name
+FROM visits
+WHERE vets_id = (SELECT id FROM vets WHERE name = 'William Tatcher')
+ORDER BY date_of_visit DESC
+LIMIT 1;
 
 
 
