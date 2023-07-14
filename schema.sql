@@ -63,9 +63,8 @@ CREATE TABLE specializations(
 );
 
 -- Create a join table called visits to handle a many-to-many relationship between the tables animals and vets
-CREATE TABLE visits(
-  visit_id SERIAL PRIMARY KEY,
-  animals_id INTEGER REFERENCES animals (id),
+CREATE TABLE visits (
+  animal_name VARCHAR(100),
   vets_id INTEGER REFERENCES vets(id),
   date_of_visit DATE
 );
