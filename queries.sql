@@ -279,6 +279,17 @@ JOIN vets ON visits.vets_id = vets.id
 WHERE date_of_visit = (SELECT MAX(date_of_visit) FROM visits);
 
 
+-- 8 How many visits were with a vet that did not specialize in that animal's species?
+SELECT COUNT(*) AS count_no_match_specialty
+FROM visits
+JOIN vets 
+ON visits.vets_id = vets.id
+JOIN specializations 
+ON vets.id = specializations.vets_id
+JOIN animals 
+ON visits.animal_name = animals.name
+WHERE specializations.vets_id != animals.species_id;
+
 
 
 
