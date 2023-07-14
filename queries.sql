@@ -257,7 +257,13 @@ WHERE vets_id = (SELECT id FROM vets WHERE name = 'Stephanie Mendez')
   AND date_of_visit >= '2020-04-01'
   AND date_of_visit <= '2020-08-30';
 
-  
+
+-- 5 What animal has the most visits to vets?
+SELECT animal_name, COUNT(*) AS visits_count
+FROM visits
+GROUP BY animal_name
+ORDER BY visits_count DESC
+LIMIT 1;
 
 
 
