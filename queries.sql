@@ -244,6 +244,12 @@ SELECT COUNT(DISTINCT animal_name)
 FROM visits
 WHERE vets_id = (SELECT id FROM vets WHERE name = 'Stephanie Mendez');
 
+-- 3. List all vets and their specialties, including vets with no specialties.
+SELECT vets.name, COALESCE(specializations.specialty, 'None') AS specialty
+FROM vets
+LEFT JOIN specializations 
+ON vets.id = specializations.vets_id;
+
 
 
 
