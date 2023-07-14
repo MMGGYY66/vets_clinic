@@ -265,6 +265,15 @@ GROUP BY animal_name
 ORDER BY visits_count DESC
 LIMIT 1;
 
+-- 6 Who was Maisy Smith's first visit?
+SELECT animal_name
+FROM visits
+WHERE vets_id = (SELECT id FROM vets WHERE name = 'Maisy Smith')
+ORDER BY date_of_visit ASC
+LIMIT 1;
+
+
+
 
 
 
